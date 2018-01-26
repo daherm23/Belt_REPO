@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Destination</title>
+  </head>
+  <body>
+    <a href="/travels"><button>Home</button></a>
+    <a href="/logout"><button>Logout</button></a>
+
+    <h1>{{ trip.destination }}</h1>
+    <h3>Planned by: {{ trip.uploader.name }}</h3>
+    <h3>Description: {{ trip.desc }}</h3>
+    <h3>Travel Date From: {{ trip.start_date }}</h3>
+    <h3>Travel Date To: {{ trip.end_date }}</h3>
+
+    <h2>Other users' joining the trip:</h2>
+    {% for user in homies %}
+    <h4>{{ user.name }}</h4>
+    {% endfor %}
+  </body>
+</html>

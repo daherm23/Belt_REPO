@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Home</title>
+  </head>
+  <body>
+    <a href="/logout"><button>Logout</button></a>
+    <h2>Hello, {{ user.name }}</h2>
+    <h5>Your Trip Schedules</h5>
+    <table>
+      <tr>
+        <th>Destination</th>
+        <th>Travel Start Date</th>
+        <th>Travel End Date</th>
+        <th>Plan</th>
+      </tr>
+      {% for trip in destinations %}
+      <tr>
+        <td><a href="travels/destination/{{trip.id}}">{{ trip.destination }}</a></td>
+        <td>{{ trip.start_date }}</td>
+        <td>{{ trip.end_date }}</td>
+        <td>{{ trip.desc }}</td>
+      </tr>
+      {% endfor %}
+    </table>
+
+    <h5>Other User's Travel Plans</h5>
+    <table>
+      <tr>
+        <th>Name</th>
+        <th>Destination</th>
+        <th>Travel Start Date</th>
+        <th>Travel End Date</th>
+        <th>Do You Want To Join?</th>
+      </tr>
+      {% for trip in trips %}
+      <tr>
+        <td>{{ trip.uploader.name }}</td>
+        <td><a href="travels/destination/{{trip.id}}">{{ trip.destination }}</a></td>
+        <td>{{ trip.start_date }}</td>
+        <td>{{ trip.end_date}}</td>
+        <td><a href="travels/join/{{trip.id}}">Join</a></td>
+      </tr>
+      {% endfor %}
+    </table>
+    <a href="travels/add">Add Travel Plan</a>
+  </body>
+</html>
